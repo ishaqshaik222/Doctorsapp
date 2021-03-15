@@ -1,21 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { StyleSheet, Text, View ,Platform,StatusBar, SafeAreaView, TouchableOpacity} from 'react-native';
+import StartScreen from './Screens/StartScreen';
 export default function App() {
+  const [hideText, setHideText] = React.useState(false);
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    < >
+    <StatusBar showHideTransition='fade' barStyle = "dark-content" hidden = {hideText} backgroundColor = "#28318c" translucent = {false}/>
+    {/* <TouchableOpacity styles={{flex:1,justifyContent:'center'}} onPress={()=>setHideText(!hideText)}><Text >Hello</Text></TouchableOpacity> */}
+    <StartScreen/>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // flex: 1,
+   
+    // alignItems: 'center',
+    // justifyContent: 'center',
   },
 });
