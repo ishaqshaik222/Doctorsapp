@@ -39,6 +39,7 @@ export default function StartScreen() {
           >
             <Tab.Screen
               name="Appoitment"
+              title="Appointment"
               component={Appointment}
               options={{
                 tabBarIcon: 'home-account',
@@ -136,10 +137,16 @@ export default function StartScreen() {
 return (
     
    
-        <Stack.Navigator>
+        <Stack.Navigator
+        screenOptions={{headerTitleAlign: 'center'}}>
             <Stack.Screen name="Login" component={Login} options={{ title: 'Login',headerShown: false, headerStyle: null }} />
             <Stack.Screen name="Dashboard" component={Dashboard} options={{ title: 'Dashboard', headerShown: false, headerStyle: null }} />
-            <Stack.Screen name="BottomTabs" component={BottomTabs} options={{ title: 'BottomTabs', headerShown: false, headerStyle: null }} />
+            <Stack.Screen name="BottomTabs" component={BottomTabs} options={{  headerTintColor: 'white',title: 'APPOINTMENTS', headerShown: true,headerTitleStyle: {
+    color: 'white',
+   
+  },headerStyle: {
+             backgroundColor: '#28318c' ,
+           }}} />
         </Stack.Navigator>
         
    

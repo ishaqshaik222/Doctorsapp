@@ -7,7 +7,7 @@ import {
   Image,
   TouchableOpacity,
   Dimensions,
-  ScrollView,
+  ScrollView,Button
 } from "react-native";
 import CalendarStrip from "react-native-calendar-strip";
 import axios from "axios";
@@ -19,18 +19,26 @@ import {
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 import base64 from "react-native-base64";
+//import basic react native components
+import BottomSheetApp  from '../Components/BottomSheet'
+import {UserContext ,BottomHeaderContext} from '../Components/CommonContext'
 export default class Appointment extends Component {
   constructor(props) {
     super(props);
     this.state = {
       selectedDate: moment().format(),
       responseData: [],
+      visible:false,
+      clickedId: 0,
+      currentPatient:{}
     };
+   
   }
-
+ 
   getTodaysAppointment() {}
 
   componentDidMount() {
+    
     var bodyFormData = new FormData();
     var username = "smilesadmin@gmail.com";
     var password = "smilesadmin";
@@ -66,6 +74,7 @@ export default class Appointment extends Component {
   }
 
   componentDidUpdate() {
+    console.log(this.state.visible)
     //   var bodyFormData = new FormData();
     //   var username = 'smilesadmin@gmail.com';
     //   var password = 'smilesadmin';
@@ -94,9 +103,14 @@ export default class Appointment extends Component {
     //   });
     // console.log("will update"+moment().format('DD/MM/YYYYY'))
   }
-  LapsList = () => {
-    console.log(this.state.responseData);
-  };
+
+  closeHandler = ()=>{
+    this.setState({visible:!this.state.visible});
+  }
+//  toggleBottomNavigationView = () => {
+//     //Toggling the visibility state of the bottom sheet
+//     this.setState({visible:true});
+//   };
 
   render() {
     return (
@@ -161,7 +175,7 @@ export default class Appointment extends Component {
                 console.log("View--------" + person);
                 console.log("View--------" + person.starttime);
                 return (
-                  <View
+                  <View key={index}
                     style={{
                       height: 80,
                       borderBottomWidth: 2,
@@ -230,13 +244,18 @@ export default class Appointment extends Component {
                           justifyContent: "center",
                         }}
                       >
-                        <View style={{ alignItems: "center" }}>
+                        <TouchableOpacity onPress={()=>{
+                          this.setState({currentPatient:person})
+                          this.setState({visible: !this.state.visible})
+                        }}>
+                        <View style={{ alignItems: "center" }} >
                           <Image
                             resizeMode="contain"
                             style={{ justifyContent: "center" }}
                             source={require("../assets/Group_41.png")}
                           />
                         </View>
+                        </TouchableOpacity>
                       </View>
                     </View>
                   </View>
@@ -245,7 +264,14 @@ export default class Appointment extends Component {
             </View>
           </ScrollView>
         </View>
+        {/*  */}
+        
+        <BottomSheetApp Id={this.state.clickedId} visible={this.state.visible} closeHandler={this.closeHandler} currentPatient = {this.state.currentPatient}/>
+        
+        
+      {/*  */}
       </View>
+      
     );
   }
 }
@@ -256,4 +282,5 @@ const styles = StyleSheet.create({
     // paddingTop: 20,
     backgroundColor: "#fff",
   },
+ 
 });

@@ -16,7 +16,7 @@ export default function Dashboard({navigation}) {
       
     const executeScreenFn=(screenOpt)=>{
         navigation.navigate
-        navigation.navigate('BottomTabs',{ screen: screenOpt })
+        navigation.navigate('BottomTabs',{ screen: screenOpt,name: 'screenOpt' })
     }
     const Item = (props)=>{
         // imageSource= require("../assets/"+props.iconName+".png")
