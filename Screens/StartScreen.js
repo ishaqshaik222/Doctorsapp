@@ -1,6 +1,6 @@
 // import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect,useMemo } from 'react';
-import { StyleSheet, Text, View,Platform,StatusBar, } from 'react-native';
+import { StyleSheet, Text, View,Platform,StatusBar,Image } from 'react-native';
 import Login from './Login';
 import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
@@ -42,15 +42,28 @@ export default function StartScreen() {
               title="Appointment"
               component={Appointment}
               options={{
-                tabBarIcon: 'home-account',
+                tabBarIcon: ({ color }) => (
+                  <Image style={{ height: 28,width:20 }}
+                  resizeMode="contain" 
+                    source={require('../assets/bottomNav/fi-rr-calendar.png')                  
+                    }/>
+               ), 
+               tabBarLabel: 'Appoitment'  
                // tabBarVisible:true,
               }}
+              
             />
             <Tab.Screen
-              name="Message"
+              name="Messages"
               component={Messages}
               options={{
-                tabBarIcon: 'bell-outline',
+                tabBarIcon: ({ color }) => (
+                  <Image style={{ height: 28,width:20 }}
+                  resizeMode="contain" 
+                    source={require('../assets/bottomNav/fi-rr-comment-alt.png')                  
+                    }/>
+               ), 
+               tabBarLabel: 'Messages'  
                 
               }}
             />
@@ -58,21 +71,39 @@ export default function StartScreen() {
               name="Patients"
               component={Patients}
               options={{
-                tabBarIcon: 'message-text-outline',
+                tabBarIcon: ({ color }) => (
+                  <Image style={{ height: 28,width:20 }}
+                  resizeMode="contain" 
+                    source={require('../assets/bottomNav/fi-rr-stop.png')                  
+                    }/>
+               ), 
+               tabBarLabel: 'Patients'  
               }}
             />
             <Tab.Screen
               name="TeamChat"
               component={Teamchat}
               options={{
-                tabBarIcon: 'message-text-outline',
+                tabBarIcon: ({ color }) => (
+                  <Image style={{ height: 28,width:20 }}
+                  resizeMode="contain" 
+                    source={require('../assets/bottomNav/fi-rr-comment.png')                  
+                    }/>
+               ), 
+               tabBarLabel: 'TeamChat'  
               }}
             />
             <Tab.Screen
               name="More"
               component={Teamchat}
               options={{
-                tabBarIcon: 'message-text-outline',
+                tabBarIcon: ({ color }) => (
+                  <Image style={{ height: 28,width:20 }}
+                  resizeMode="contain" 
+                    source={require('../assets/bottomNav/fi-rr-calendar.png')                  
+                    }/>
+               ), 
+               tabBarLabel: 'More'  
               }}
             />
           </Tab.Navigator>
@@ -135,22 +166,38 @@ export default function StartScreen() {
     const CreateMainStack = ({navigation}) => {
 //    <PaperProvider theme={theme}>
 return (
-    
-   
-        <Stack.Navigator
-        screenOptions={{headerTitleAlign: 'center'}}>
-            <Stack.Screen name="Login" component={Login} options={{ title: 'Login',headerShown: false, headerStyle: null }} />
-            <Stack.Screen name="Dashboard" component={Dashboard} options={{ title: 'Dashboard', headerShown: false, headerStyle: null }} />
-            <Stack.Screen name="BottomTabs" component={BottomTabs} options={{  headerTintColor: 'white',title: 'APPOINTMENTS', headerShown: true,headerTitleStyle: {
-    color: 'white',
-   
-  },headerStyle: {
-             backgroundColor: '#28318c' ,
-           }}} />
-        </Stack.Navigator>
+  <Stack.Navigator screenOptions={{ headerTitleAlign: "center",headerRight:()=>{return(
+ 
+      <Text style={{backgroundColor:'#FA7366',width:30,height:30,textAlign:'center',textAlignVertical:'center',borderRadius:15,right:20,fontWeight:'bold',color:'white'}}>10</Text>
+ 
+  )} }}>
+    <Stack.Screen
+      name="Login"
+      component={Login}
+      options={{ title: "Login", headerShown: false, headerStyle: null }}
+    />
+    <Stack.Screen
+      name="Dashboard"
+      component={Dashboard}
+      options={{ title: "Dashboard", headerShown: false, headerStyle: null }}
+    />
+    <Stack.Screen
+      name="BottomTabs"
+      component={BottomTabs}
+      options={{
+        headerTintColor: "white",
+        title: "APPOINTMENTS",
+        headerShown: true,
+        headerTitleStyle: {
+          color: "white",
+        },
+        headerStyle: {
+          backgroundColor: "#28318c",
+        },
+      }}
         
-   
-   
+    />
+  </Stack.Navigator>
 );
 //   </PaperProvider>
 

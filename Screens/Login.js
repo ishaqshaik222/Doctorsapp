@@ -24,7 +24,7 @@ export default function Login({navigation}) {
                 <View style={{ flex: 1, width: wp('80%'), height: hp('30%'), justifyContent: 'center' }}>
                     <View style={{}}>
                         <TextInput
-                            label="UserName"
+                            label="Username"
                             value={userName}
                             onChangeText={userName => setUserName(userName)}
                             //underlineColorAndroid="transparent"
@@ -44,7 +44,7 @@ export default function Login({navigation}) {
                             underlineColor='transparent'
                             autoCapitalize='none'
                             style={{ backgroundColor: 'transparent' }}
-                            theme={{ colors: { primary: 'white', placeholder: 'white', text: 'white' } }}
+                            theme={{ colors: { primary: 'white' ,placeholder: 'white', text: 'white' ,fontFamily:'soraRegular'} }}
                             underlineColor='#3c4384'
 
                         />
@@ -55,8 +55,8 @@ export default function Login({navigation}) {
                              navigation.navigate("Dashboard");
                            
                          }} >
-                            <View style={{ alignItems: 'center', width: wp('80%'),height:hp('4%'), backgroundColor: '#27bef0', borderRadius: 3,justifyContent:'center' }}>
-                                <Text style={{ textAlign: 'center', color: 'white' }}>Login</Text>
+                            <View style={{ alignItems: 'center', width: wp('80%'),height:hp('5%'), backgroundColor: '#27bef0', borderRadius: 10,justifyContent:'center' }}>
+                                <Text style={{ fontSize:20,  textAlign: 'center', color: 'white' ,fontFamily:'soraRegular'}}>Login</Text>
                             </View>
                         </TouchableOpacity>
                     </View>
