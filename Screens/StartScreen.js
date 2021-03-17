@@ -100,7 +100,7 @@ export default function StartScreen() {
                 tabBarIcon: ({ color }) => (
                   <Image style={{ height: 28,width:20 }}
                   resizeMode="contain" 
-                    source={require('../assets/bottomNav/fi-rr-calendar.png')                  
+                    source={require('../assets/Group25944.png')                  
                     }/>
                ), 
                tabBarLabel: 'More'  
