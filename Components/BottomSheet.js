@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 // import all the components we are going to use
-import { SafeAreaView, StyleSheet, View, Text, Button,Image } from 'react-native';
+import { SafeAreaView, StyleSheet, View, Text, Button,Image,TouchableOpacity } from 'react-native';
 
 //import basic react native components
 import { BottomSheet } from 'react-native-btr';
@@ -16,20 +16,23 @@ import {
   import {Response} from '../Configs/BottomConfig'
 const BottomSheetApp = (props) => {
   const [visible, setVisible] = useState(true);
-
-  console.log(props.currentPatient)
+  const [petientDetails, setPetientDetails] = useState(true);
   const currentPropDetails = props.currentPatient
-  console.log(props.Id)
+  
         props.visible
   const toggleBottomNavigationView = (props) => {
     //Toggling the visibility state of the bottom sheet
     setVisible(!visible);
     props.visible=false;
+    setPetientDetails(props.CurrentPatientDetails)
   };
         const Testbox=(props)=>{
-            console.log("ITEMS--"+props.item.iconName)
+           // console.log("object333333333333333333333333333",props)
             return(
+               <TouchableOpacity onPress={ props.value.navigationHandler
+             
                
+              }>
                <View style={{ flexDirection: "column", }}>
                 <View
                   style={{
@@ -54,12 +57,14 @@ const BottomSheetApp = (props) => {
                   </View>
                 </View>
               </View>
+              </TouchableOpacity>
             )
         }
   if(props.Id===true){
     setVisible(!visible);
   }
   if(props.visible===true){
+
   return (
     <SafeAreaView style={{}}>
       <View>
@@ -81,7 +86,7 @@ const BottomSheetApp = (props) => {
                 //justifyContent: 'space-between',
               }}
             >
-              <Text
+              <Text 
                 style={{
                   //textAlign: 'center',
                   paddingTop: 10,
@@ -106,7 +111,7 @@ const BottomSheetApp = (props) => {
                   >
                   {Response.map((data,index)=>{
            
-                   return (<Testbox key={index} item={data}/>)
+                   return (<Testbox key={index} item={data} value={props}/>)
                 })
                   }
                   

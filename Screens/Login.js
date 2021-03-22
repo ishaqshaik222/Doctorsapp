@@ -55,8 +55,8 @@ export default function Login({navigation}) {
                              navigation.navigate("Dashboard");
                            
                          }} >
-                            <View style={{ alignItems: 'center', width: wp('80%'),height:hp('5%'), backgroundColor: '#27bef0', borderRadius: 10,justifyContent:'center' }}>
-                                <Text style={{ fontSize:20,  textAlign: 'center', color: 'white' ,fontFamily:'soraRegular'}}>Login</Text>
+                            <View  shouldAllowFontScaling={false} style={{ alignItems: 'center', width: wp('80%'),height:hp('5%'), backgroundColor: '#27bef0', borderRadius: 10,justifyContent:'center' }}>
+                                <Text  shouldAllowFontScaling={false} style={{ fontSize:20,  textAlign: 'center', color: 'white' ,fontFamily:'soraRegular'}}>Login</Text>
                             </View>
                         </TouchableOpacity>
                     </View>
@@ -66,7 +66,7 @@ export default function Login({navigation}) {
             </View>
             <View style={{flex:1, height:hp('25%'),justifyContent:"flex-end",}}>
                     <View style={{width:250,marginLeft:45}}>
-                    <Text style={{color:'white',fontSize:20}}>Forgot Password?</Text>
+                    <Text  shouldAllowFontScaling={false} style={{color:'white',fontSize:20}}>Forgot Password?</Text>
                     </View>
                 </View>
         </ScrollView>

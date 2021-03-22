@@ -18,7 +18,7 @@ export default function Dashboard({ navigation }) {
       <View
         style={{ ...styles.circle, position: "relative", top: 10, left: 20 }}
       >
-        <Text style={styles.count}>{count >= 100 ? "99+" : count}</Text>
+        <Text allowFontScaling={false} style={styles.count}>{count >= 100 ? "99+" : count}</Text>
       </View>
     ) : (
       <View
@@ -72,9 +72,9 @@ export default function Dashboard({ navigation }) {
             alignItems: "center",
           }}
         >
-          <Badge count={props.Count} />
+          <Badge count={props.Count}  allowFontScaling={false}/>
           <Image resizeMode="contain" source={props.iconName} />
-          <Text style={{ marginTop: 10 }}>{props.Name}</Text>
+          <Text allowFontScaling={false} style={{ marginTop: 10 }}>{props.Name}</Text>
         </View>
       </TouchableOpacity>
     );
@@ -107,11 +107,11 @@ export default function Dashboard({ navigation }) {
             source={require("../assets/EMS_Usericon.png")}
           />
         </View>
-        <View style={{ alignItems: "center", marginTop: 20 }}>
-          <Text style={{ color: "white", fontSize: 22 }}>
+        <View  style={{ alignItems: "center", marginTop: 20 }}>
+          <Text allowFontScaling={false} style={{ color: "white", fontSize: 22 }}>
             Hi INAYA ISHAQ SHAIK
           </Text>
-          <Text style={{ color: "#279dd8", fontSize: 18 }}>
+          <Text allowFontScaling={false} style={{ color: "#279dd8", fontSize: 18 }}>
             Smile centers Dentist
           </Text>
         </View>
@@ -241,7 +241,7 @@ const styles = StyleSheet.create({
   count: {
     color: "#FFF",
     fontFamily: "soraRegular",
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: "bold",
   },
 });

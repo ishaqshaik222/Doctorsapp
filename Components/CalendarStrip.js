@@ -1,5 +1,6 @@
 import React, { Component, PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {
   View,
   Text,
@@ -27,14 +28,21 @@ import {
 } from 'date-fns';
 import ChineseLunar from 'chinese-lunar';
 import ChineseLocale from 'date-fns/locale/zh_cn';
-
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp,
+} from "react-native-responsive-screen";
+import moment from "moment";
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 const width = Dimensions.get('window').width;
 const ITEM_LENGTH = width / 7;
-const _today = new Date();
-const _year = _today.getFullYear();
-const _month = _today.getMonth();
-const _day = _today.getDate();
-const TODAY = new Date(_year, _month, _day); // FORMAT: Wed May 16 2018 00:00:00 GMT+0800 (CST)
+
+const TODAY =moment(new Date())// FORMAT: Wed May 16 2018 00:00:00 GMT+0800 (CST)
+const _today =TODAY
+const _year = moment().year();
+const _month =moment().month();
+const _day = moment().day()
 var  months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 var d = new Date();
 var monthName=months[d.getMonth()];
@@ -92,6 +100,7 @@ class DateItem extends PureComponent {
 class CalendarStrip extends Component {
   constructor(props) {
     super(props);
+    console.log("&&&&&&&&&&&&&&&&&&&&&&&&&&&   "+props.weekStartsOn+"  $$$$$$$$$$$$$$$$$$")
     this.state = {
       datas: this.getInitialDates(props.weekStartsOn),
       isTodayVisible: true,
@@ -220,10 +229,24 @@ class CalendarStrip extends Component {
     console.log(weekNumber)
     return (
       <View style={styles.header}>
+        <View style={{justifyContent:'flex-start',}}>
+        <Icon
+                                           
+                                            name="long-arrow-left"
+                                            color="black"
+                                            style={{ fontSize: 20, }}
+                                        ></Icon>
+        </View>
         <Text style={styles.headerDate}>{monthName}</Text>
         {showWeekNumber &&
           <Text style={styles.headerDateWeek}>{weekNumber}</Text>
         }
+       <Icon
+                                           
+                                           name="long-arrow-right"
+                                           color="black"
+                                           style={{ fontSize: 20, }}
+                                       ></Icon>
         {!this.state.isTodayVisible &&
           <TouchableOpacity style={styles.headerGoTodayButton} onPress={() => {
             const page = this.state.pageOfToday;
@@ -259,6 +282,7 @@ class CalendarStrip extends Component {
       <View style={styles.container} {...this._panResponder.panHandlers}>
         {this._renderHeader()}
         <Weeks isChinese={isChinese} weekStartsOn={weekStartsOn} />
+      
         <FlatList
           ref={ref => this._calendar = ref}
           bounces={false}
@@ -285,6 +309,7 @@ class CalendarStrip extends Component {
               marked={marked.find(d => isSameDay(d, item))}
             />}
         />
+         
       </View>
     );
   }
@@ -346,11 +371,12 @@ const styles = StyleSheet.create({
     height: 30+30+50,
   },
   header: {
-    height: 30,
+    //height: 30,
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: 'white',
+
   },
   headerDate: {
     color: 'black',
@@ -373,14 +399,14 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   itemContainer: {
-    width: width / 7,
-    height: 50,
-    borderBottomWidth: 1,
-    borderBottomColor: 'rgba(100,100,100,0.1)',
-  },
+     width: width / 7,
+    // height: hp('20%'),
+     borderBottomWidth: 1,
+     borderBottomColor: 'rgba(100,100,100,0.1)',
+   },
   itemWrapButton: {
     flex: 1,
-    justifyContent: 'center',
+    //justifyContent: 'center',
     alignItems: 'center',
   },
   itemView: {

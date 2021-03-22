@@ -6,7 +6,7 @@ import { DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Dashboard from './Dashboard'
-import BottomTabs from '../Components/BottomDrawer';
+import AppointmentStacks from '../Components/AppointmentStacks';
 import {AuthContext,UserContext} from '../Components/CommonContext';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
@@ -14,6 +14,7 @@ import Messages from './Messages';
 import Patients from './Patients';
 import Teamchat from './Teamchat';
 import Appointment from './Appoitments'
+import { widthPercentageToDP } from 'react-native-responsive-screen';
 
 export default function StartScreen() {
     const Tab = createMaterialBottomTabNavigator();
@@ -40,7 +41,7 @@ export default function StartScreen() {
             <Tab.Screen
               name="Appoitment"
               title="Appointment"
-              component={Appointment}
+              component={AppointmentStacks}
               options={{
                 tabBarIcon: ({ color }) => (
                   <Image style={{ height: 28,width:20 }}
@@ -100,12 +101,13 @@ export default function StartScreen() {
                 tabBarIcon: ({ color }) => (
                   <Image style={{ height: 28,width:20 }}
                   resizeMode="contain" 
-                    source={require('../assets/Group25944.png')                  
+                    source={require('../assets/fi-rr-comment.png')                  
                     }/>
                ), 
                tabBarLabel: 'More'  
               }}
             />
+            
           </Tab.Navigator>
         );
       };
@@ -163,6 +165,9 @@ export default function StartScreen() {
         }),
         []
       );
+
+
+
     const CreateMainStack = ({navigation}) => {
 //    <PaperProvider theme={theme}>
 return (
@@ -174,6 +179,7 @@ return (
     <Stack.Screen
       name="Login"
       component={Login}
+      shouldAllowFontScaling={false}
       options={{ title: "Login", headerShown: false, headerStyle: null }}
     />
     <Stack.Screen
@@ -181,18 +187,22 @@ return (
       component={Dashboard}
       options={{ title: "Dashboard", headerShown: false, headerStyle: null }}
     />
+   
     <Stack.Screen
       name="BottomTabs"
       component={BottomTabs}
+      shouldAllowFontScaling={false}
       options={{
         headerTintColor: "white",
-        title: "APPOINTMENTS",
+        title: "Appointment",
         headerShown: true,
         headerTitleStyle: {
           color: "white",
+          fontSize:widthPercentageToDP('6%')
         },
         headerStyle: {
           backgroundColor: "#28318c",
+          
         },
       }}
         
