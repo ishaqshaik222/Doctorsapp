@@ -25,15 +25,15 @@ import BottomSheetApp from "../Components/BottomSheet";
 function AppointmentView(props) {
     console.log(props)
 
-    const AppointmentViewList=()=>{
+    const AppointmentViewList=(props)=>{
         return(
             <View style={{justifyContent:'center',alignItems:'center'}}>
-                <View style={{width:wp('80%'),backgroundColor:'red',flexDirection:"row",justifyContent:"space-between"}}>
-                    <View style={{}}>
-                        <Text>asdf</Text>
+                <View style={{width:wp('90%'),flexDirection:"row",justifyContent:"space-between",borderBottomWidth:1,borderColor:'grey',height:hp('6%')}}>
+                    <View style={{justifyContent:'center'}}>
+                        <Text style={{fontSize:15,color:'grey'}}>Name :</Text>
                     </View>
-                    <View style={{}}>
-                        <Text>asdf</Text>
+                    <View style={{justifyContent:'center'}}>
+                        <Text style={{fontWeight:'bold'}}>Inaya</Text>
                     </View>
                 </View>
                               
@@ -64,6 +64,9 @@ function AppointmentView(props) {
               </View>
          </View>
          <AppointmentViewList/>
+         
+         <AppointmentViewList/>
+
      </View>
     );
 }
