@@ -1,0 +1,1 @@
+export default  APIURl = "https://mobileapp.doctor/api/v1/"
