@@ -13,6 +13,8 @@ import {
   widthPercentageToDP as wp,
 } from "react-native-responsive-screen";
 export default function Dashboard({ navigation }) {
+  console.log('navigation',navigation)
+ 
   const Badge = ({ count }) => {
     return count > 0 ? (
       <View
@@ -35,6 +37,7 @@ export default function Dashboard({ navigation }) {
 
   const executeScreenFn = (screenOpt) => {
     navigation.navigate;
+    
     navigation.navigate("BottomTabs", { screen: screenOpt, name: "screenOpt" });
   };
   const Item = (props) => {

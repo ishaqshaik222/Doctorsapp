@@ -9,6 +9,7 @@ const fetchFonts = () => {
   return Font.loadAsync({
     'sorafont': require("./assets/Sora-VariableFont_wght.ttf"),
     'soraRegular': require("./assets/static/Sora-Regular.ttf"),
+    'SoraSemiBold': require("./assets/static/Sora-SemiBold.ttf"),
   });
 };
 export default function App() {
